@@ -345,7 +345,7 @@
  
  @param image The image that will be used to crop.
  */
-- (nonnull instancetype)initWithImage:(nonnull UIImage *)image NS_SWIFT_NAME(init(image:));
+- (nonnull instancetype)initWithImage:(nonnull UIImage *)image imageIdentifier:(nonnull NSString *)imageIdentifier NS_SWIFT_NAME(init(image:imageIdentifier:));
 
 /** 
  Creates a new instance of a crop view controller with the supplied image and cropping style
@@ -353,7 +353,7 @@
  @param style The cropping style that will be used with this view controller (eg, rectangular, or circular)
  @param image The image that will be cropped
  */
-- (nonnull instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(nonnull UIImage *)image NS_SWIFT_NAME(init(croppingStyle:image:));
+- (nonnull instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(nonnull UIImage *)image imageIdentifier:(nonnull NSString *)imageIdentifier NS_SWIFT_NAME(init(croppingStyle:image:imageIdentifier));
 
 /**
  Resets object of TOCropViewController class as if user pressed reset button in the bottom bar themself
