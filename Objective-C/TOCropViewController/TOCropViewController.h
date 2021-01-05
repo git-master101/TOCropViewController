@@ -88,10 +88,19 @@
 /**
  The original, uncropped image that was passed to this controller.
  */
-@property (nonnull, nonatomic, readonly) UIImage *image;
+//@property (nonnull, nonatomic, readonly) UIImage *image;
 
 /**
+<<<<<<< Updated upstream
  The minimum croping aspect ratio. If set, user is prevented from setting cropping rectangle to lower aspect ratio than defined by the parameter.
+=======
+ The image identifier for the original selected image
+ */
+@property (nonnull, nonatomic, readonly) NSString *imageIdentifier;
+/**
+ The minimum croping aspect ratio. If set, user is prevented from
+ setting cropping rectangle to lower aspect ratio than defined by the parameter.
+>>>>>>> Stashed changes
  */
 @property (nonatomic, assign) CGFloat minimumAspectRatio;
 

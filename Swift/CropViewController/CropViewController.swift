@@ -442,8 +442,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
      
      @param image The image that will be used to crop.
      */
-    public init(image: UIImage) {
-        self.toCropViewController = TOCropViewController(image: image)
+    public init(image: UIImage, imageIdentifier: String) {
+        self.toCropViewController = TOCropViewController(image: image, imageIdentifier: imageIdentifier)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
     }
@@ -454,8 +454,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
      @param style The cropping style that will be used with this view controller (eg, rectangular, or circular)
      @param image The image that will be cropped
      */
-    public init(croppingStyle: CropViewCroppingStyle, image: UIImage) {
-        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image)
+    public init(croppingStyle: CropViewCroppingStyle, image: UIImage, imageIdentifier: String) {
+        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image, imageIdentifier: imageIdentifier)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
     }

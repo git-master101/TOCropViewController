@@ -71,7 +71,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 
 @implementation TOCropViewController
 
-- (instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage *)image
+- (instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage *)image imageIdentifier:(NSString *)imageIdentifier
 {
     NSParameterAssert(image);
 
@@ -80,6 +80,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         // Init parameters
         _image = image;
         _croppingStyle = style;
+        _imageIdentifier = imageIdentifier;
         
         // Set up base view controller behaviour
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -98,9 +99,9 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     return self;
 }
 
-- (instancetype)initWithImage:(UIImage *)image
+- (instancetype)initWithImage:(UIImage *)image imageIdentifier:(NSString *)imageIdentifier
 {
-    return [self initWithCroppingStyle:TOCropViewCroppingStyleDefault image:image];
+    return [self initWithCroppingStyle:TOCropViewCroppingStyleDefault image:image imageIdentifier:imageIdentifier];
 }
 
 - (void)viewDidLoad
