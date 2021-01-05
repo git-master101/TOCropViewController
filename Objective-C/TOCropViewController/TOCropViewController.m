@@ -1008,10 +1008,6 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         
         isCallbackOrDelegateHandled = YES;
     }
-    
-    if (!isCallbackOrDelegateHandled) {
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 #pragma mark - Property Methods -
