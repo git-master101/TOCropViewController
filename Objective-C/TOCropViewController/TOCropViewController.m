@@ -92,7 +92,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         _transitionController = [[TOCropViewControllerTransitioning alloc] init];
 
         // Default initial behaviour
-        _aspectRatioPreset = TOCropViewControllerAspectRatioPreset4x3;
+        _aspectRatioPreset = TOCropViewControllerAspectRatioPreset3x4;
         _toolbarPosition = TOCropViewControllerToolbarPositionBottom;
     }
 	
@@ -627,7 +627,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         case TOCropViewControllerAspectRatioPresetSquare:
             aspectRatio = CGSizeMake(1.0f, 1.0f);
             break;
-        case TOCropViewControllerAspectRatioPreset4x3:
+        case TOCropViewControllerAspectRatioPreset3x4:
             aspectRatio = CGSizeMake(3.0f, 4.0f);
             break;
     }
@@ -1131,7 +1131,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 - (void)setCustomAspectRatio:(CGSize)customAspectRatio
 {
     _customAspectRatio = customAspectRatio;
-    [self setAspectRatioPreset:TOCropViewControllerAspectRatioPreset4x3 animated:NO];
+    [self setAspectRatioPreset:TOCropViewControllerAspectRatioPreset3x4 animated:NO];
 }
 
 - (BOOL)resetAspectRatioEnabled
