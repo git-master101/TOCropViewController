@@ -647,14 +647,14 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
                                 (self.aspectRatioLockEnabled && self.aspectRatioLockDimensionSwapEnabled);
     
     //If the image is a portrait shape, flip the aspect ratio to match
-    if (self.cropView.cropBoxAspectRatioIsPortrait &&
-        aspectRatioCanSwapDimensions)
-    {
-        CGFloat width = aspectRatio.width;
-        aspectRatio.width = aspectRatio.height;
-        aspectRatio.height = width;
-    }
-    
+//    if (self.cropView.cropBoxAspectRatioIsPortrait &&
+//        aspectRatioCanSwapDimensions)
+//    {
+//        CGFloat width = aspectRatio.width;
+//        aspectRatio.width = aspectRatio.height;
+//        aspectRatio.height = width;
+//    }
+//
     [self.cropView setAspectRatio:aspectRatio animated:animated];
 }
 
