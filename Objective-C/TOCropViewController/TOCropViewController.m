@@ -165,9 +165,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 
     // If an initial aspect ratio was set before presentation, set it now once the rest of
     // the setup will have been done
-    if (self.aspectRatioPreset != TOCropViewControllerAspectRatioPreset4x3) {
-        [self setAspectRatioPreset:self.aspectRatioPreset animated:NO];
-    }
+    [self setAspectRatioPreset:self.aspectRatioPreset animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -597,12 +595,6 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
             [itemStrings addObject:itemTitle];
             [ratioValues addObject:allowedRatio];
         }
-    }
-    
-    // If a custom aspect ratio is provided, and a custom name has been given to it, add it as a visible choice
-    if (self.customAspectRatioName.length > 0 && !CGSizeEqualToSize(CGSizeZero, self.customAspectRatio)) {
-        [itemStrings addObject:self.customAspectRatioName];
-        [ratioValues addObject:@(TOCropViewControllerAspectRatioPreset4x3)];
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
