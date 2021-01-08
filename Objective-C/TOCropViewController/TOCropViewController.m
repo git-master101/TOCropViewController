@@ -92,7 +92,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         _transitionController = [[TOCropViewControllerTransitioning alloc] init];
 
         // Default initial behaviour
-        _aspectRatioPreset = TOCropViewControllerAspectRatioPresetOriginal;
+        _aspectRatioPreset = TOCropViewControllerAspectRatioPreset4x3;
         _toolbarPosition = TOCropViewControllerToolbarPositionBottom;
     }
 	
@@ -165,7 +165,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 
     // If an initial aspect ratio was set before presentation, set it now once the rest of
     // the setup will have been done
-    if (self.aspectRatioPreset != TOCropViewControllerAspectRatioPresetOriginal) {
+    if (self.aspectRatioPreset != TOCropViewControllerAspectRatioPreset4x3) {
         [self setAspectRatioPreset:self.aspectRatioPreset animated:NO];
     }
 }
@@ -577,14 +577,14 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     //Prepare the list that will be fed to the alert view/controller
     
     // Ratio titles according to the order of enum TOCropViewControllerAspectRatioPreset
-    NSArray<NSString *> *portraitRatioTitles = @[squareButtonTitle, @"3:4"];
-    NSArray<NSString *> *landscapeRatioTitles = @[squareButtonTitle, @"4:3"];
+    NSArray<NSString *> *portraitRatioTitles = @[squareButtonTitle, @"3:4", cancelButtonTitle];
+    NSArray<NSString *> *landscapeRatioTitles = @[squareButtonTitle, @"3:4", cancelButtonTitle];
 
     NSMutableArray *ratioValues = [NSMutableArray array];
     NSMutableArray *itemStrings = [NSMutableArray array];
 
     if (self.allowedAspectRatios == nil) {
-        for (NSInteger i = 0; i < TOCropViewControllerAspectRatioPresetCustom; i++) {
+        for (NSInteger i = 0; i < 2; i++) {
             NSString *itemTitle = verticalCropBox ? portraitRatioTitles[i] : landscapeRatioTitles[i];
             [itemStrings addObject:itemTitle];
             [ratioValues addObject:@(i)];
@@ -602,7 +602,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     // If a custom aspect ratio is provided, and a custom name has been given to it, add it as a visible choice
     if (self.customAspectRatioName.length > 0 && !CGSizeEqualToSize(CGSizeZero, self.customAspectRatio)) {
         [itemStrings addObject:self.customAspectRatioName];
-        [ratioValues addObject:@(TOCropViewControllerAspectRatioPresetCustom)];
+        [ratioValues addObject:@(TOCropViewControllerAspectRatioPreset4x3)];
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -632,32 +632,11 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     _aspectRatioPreset = aspectRatioPreset;
     
     switch (aspectRatioPreset) {
-        case TOCropViewControllerAspectRatioPresetOriginal:
-            aspectRatio = CGSizeZero;
-            break;
         case TOCropViewControllerAspectRatioPresetSquare:
             aspectRatio = CGSizeMake(1.0f, 1.0f);
             break;
-        case TOCropViewControllerAspectRatioPreset3x2:
-            aspectRatio = CGSizeMake(3.0f, 2.0f);
-            break;
-        case TOCropViewControllerAspectRatioPreset5x3:
-            aspectRatio = CGSizeMake(5.0f, 3.0f);
-            break;
         case TOCropViewControllerAspectRatioPreset4x3:
-            aspectRatio = CGSizeMake(4.0f, 3.0f);
-            break;
-        case TOCropViewControllerAspectRatioPreset5x4:
-            aspectRatio = CGSizeMake(5.0f, 4.0f);
-            break;
-        case TOCropViewControllerAspectRatioPreset7x5:
-            aspectRatio = CGSizeMake(7.0f, 5.0f);
-            break;
-        case TOCropViewControllerAspectRatioPreset16x9:
-            aspectRatio = CGSizeMake(16.0f, 9.0f);
-            break;
-        case TOCropViewControllerAspectRatioPresetCustom:
-            aspectRatio = self.customAspectRatio;
+            aspectRatio = CGSizeMake(3.0f, 4.0f);
             break;
     }
     
@@ -1160,7 +1139,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 - (void)setCustomAspectRatio:(CGSize)customAspectRatio
 {
     _customAspectRatio = customAspectRatio;
-    [self setAspectRatioPreset:TOCropViewControllerAspectRatioPresetCustom animated:NO];
+    [self setAspectRatioPreset:TOCropViewControllerAspectRatioPreset4x3 animated:NO];
 }
 
 - (BOOL)resetAspectRatioEnabled
